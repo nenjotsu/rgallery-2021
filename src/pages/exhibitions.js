@@ -90,15 +90,10 @@ const ExhibitionIndex = ({ data }, location) => {
     return {
       index,
       headline: node.title,
-      button: "Visit Gallery",
-      // thumbnail: _get(node, 'thumbnail.childImageSharp', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg'),
-      thumbnail: _get(
-        node.artworks[getRndInteger(0, node.artworks.length)],
-        "thumbnail.childImageSharp",
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg"
-      )
-      // thumbnail: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/typewriter.jpg',
-      // src: node.thumbnail.childImageSharp.fluid.src
+      virtualTourUrl: node.virtual_tour_url,
+      dateFrom: node.dateFrom,
+      dateTo: node.dateTo,
+      thumbnail: node.thumbnail.childImageSharp
     };
   });
 
@@ -137,7 +132,7 @@ const ExhibitionIndex = ({ data }, location) => {
         </div>
         {/* <div className="col-6 no-padding landing-content"> */}
         <section id="right-scroll">
-          <Slider heading="Example Slider" slides={exhibitionsSlides} />
+          <Slider heading="Exhibitions" slides={exhibitionsSlides} />
         </section>
         {/* {exhibitions.length > 0 &&
                   exhibitions.filter((exh, index) => {
@@ -270,7 +265,8 @@ const indexQuery = graphql`
     }
     allStrapiExhibitions(
       # limit: 10
-      sort: { fields: dateTo, order: DESC } # filter: { isActive: { eq: true } }
+      sort: { fields: dateTo, order: DESC }
+      filter: { isActive: { eq: true } }
     ) {
       edges {
         node {

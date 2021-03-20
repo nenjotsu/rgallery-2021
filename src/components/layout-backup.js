@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import window from "global";
 // import { Link } from "gatsby"
 import TransitionLink from "gatsby-plugin-transition-link";
 import Link from "gatsby-plugin-transition-link";
@@ -6,17 +7,6 @@ import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 const Layout = props => {
   const { title, children } = props;
-  const [toggleNav, setToggleNav] = React.useState(false);
-
-  const [showScroll, setShowScroll] = useState(false);
-  const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 400) {
-      setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 400) {
-      setShowScroll(false);
-    }
-  };
-  window.addEventListener("scroll", checkScrollTop);
 
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -110,13 +100,13 @@ const Layout = props => {
           {children}
         </div>
       </main>
-      <a
+      {/* <a
         className="scrollTop"
         onClick={scrollTop}
         style={{ height: 40, display: showScroll ? "block" : "none" }}
       >
         Back to top &#x2191;
-      </a>
+      </a> */}
       <footer className="site-foot">
         &mdash; &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link>{" "}
         &mdash;

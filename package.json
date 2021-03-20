@@ -4,6 +4,14 @@
   "description": "A custom, image-centric theme for Gatsby",
   "version": "1.0.0",
   "author": "nenjotsu <nenjotsud@gmail.com>",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
   "bugs": {
     "url": "https://github.com/nenjotsu/rgallery-2021/issues"
   },
@@ -30,6 +38,7 @@
     "gatsby-source-strapi": "^0.0.12",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.19",
+    "global": "^4.4.0",
     "gsap": "^3.5.1",
     "postcss": "^8.2.4",
     "prismjs": "^1.16.0",
@@ -77,14 +86,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nenjotsu/rgallery-2021.git"
-  },
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "husky": {
     "hooks": {

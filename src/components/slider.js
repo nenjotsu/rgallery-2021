@@ -58,7 +58,7 @@ class Slider extends React.Component {
     return (
       <div className="slider" aria-labelledby={headingId}>
         <ul className="slider__wrapper" style={wrapperTransform}>
-          <h3 id={headingId} class="visuallyhidden">
+          <h3 id={headingId} className="visuallyhidden">
             {heading}
           </h3>
 
@@ -74,7 +74,7 @@ class Slider extends React.Component {
           })}
         </ul>
 
-        <div className="slider__controls">
+        {/* <div className="slider__controls">
           <SliderControl
             type="previous"
             title="Go to previous slide"
@@ -86,7 +86,7 @@ class Slider extends React.Component {
             title="Go to next slide"
             handleClick={this.handleNextClick}
           />
-        </div>
+        </div> */}
       </div>
     );
   }

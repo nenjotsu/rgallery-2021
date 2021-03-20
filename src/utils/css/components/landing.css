@@ -207,7 +207,7 @@ h3 {
 }
 .slide {
   align-items: center;
-  color: white;
+  color: #1f1f22;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -258,7 +258,8 @@ h3 {
 .slide__image-wrapper {
   background-color: var(--color-accent);
   border-radius: 1%;
-  height: 100%;
+  /* height: 100%; */
+  height: auto;
   left: 0%;
   overflow: hidden;
   position: absolute;
@@ -271,7 +272,7 @@ h3 {
   height: 110%;
   left: 0%;
   object-fit: cover;
-  opacity: 0;
+  opacity: 0.8;
   pointer-events: none;
   position: absolute;
   top: -5%;
@@ -298,6 +299,7 @@ h3 {
   opacity: 0;
   padding: 4vmin;
   position: relative;
+  top: var(--slide-size * 1.5);
   transition: transform var(--base-duration) var(--base-ease);
   visibility: hidden;
 }
@@ -311,12 +313,17 @@ h3 {
       calc(var(--x) / var(--d) * -1px),
       calc(var(--y) / var(--d) * -1px)
     );
-    background: #0000008c;
+    background-image: linear-gradient(#ffffff00, #ffffff, #ffffff, #ffffff);
+    width: 110%;
+    /* background: #0000008c; */
   }
 }
 .slide__content > * + * {
   margin-top: 2rem;
   padding: 0 2rem;
+}
+.slide__action.btn > a {
+  color: #fff;
 }
 @keyframes fade-in {
   from {

@@ -1,4 +1,5 @@
 import React from "react";
+import window from "global";
 import Img from "gatsby-image";
 import _get from "lodash/get";
 
@@ -41,7 +42,14 @@ class Slide extends React.Component {
   }
 
   render() {
-    const { src, thumbnail, button, headline, index } = this.props.slide;
+    const {
+      thumbnail,
+      virtualTourUrl,
+      headline,
+      dateFrom,
+      dateTo,
+      index
+    } = this.props.slide;
     const current = this.props.current;
     let classNames = "slide";
 
@@ -58,27 +66,32 @@ class Slide extends React.Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className="slide__image-wrapper">
-          <img
-            className="slide__image"
-            alt={headline}
-            src={
-              thumbnail.fixed != null
-                ? window.location.origin + thumbnail.fixed.src
-                : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg"
-            }
-            onLoad={this.imageLoaded}
-          />
-          {/* <Img
+          <Img
             fluid={thumbnail.fluid}
             alt={headline}
             className="slide__image"
-            onLoad={this.imageLoaded}
-          /> */}
+          />
         </div>
 
         <article className="slide__content">
           <h2 className="slide__headline">{headline}</h2>
-          <button className="slide__action btn">{button}</button>
+          <ul className="exhibition-date-duration">
+            <li>{dateFrom}</li>
+            <li className="date-duration-line" />
+            <li>{dateTo}</li>
+          </ul>
+          {virtualTourUrl && (
+            <button className="slide__action btn">
+              <a
+                href={virtualTourUrl}
+                target="_blank"
+                rel="noreferrer"
+                alt="Visit Gallery"
+              >
+                Visit Gallery
+              </a>
+            </button>
+          )}
         </article>
       </li>
     );
