@@ -7,21 +7,21 @@ import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 const Layout = props => {
   const { title, children } = props;
-  const [toggleNav, setToggleNav] = React.useState(false);
+  // const [toggleNav, setToggleNav] = React.useState(false);
 
-  const [showScroll, setShowScroll] = useState(false);
-  const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 400) {
-      setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 400) {
-      setShowScroll(false);
-    }
-  };
-  window.addEventListener("scroll", checkScrollTop);
+  // const [showScroll, setShowScroll] = useState(false);
+  // const checkScrollTop = () => {
+  //   if (!showScroll && window.pageYOffset > 400) {
+  //     setShowScroll(true);
+  //   } else if (showScroll && window.pageYOffset <= 400) {
+  //     setShowScroll(false);
+  //   }
+  // };
+  // window.addEventListener("scroll", checkScrollTop);
 
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  // const scrollTop = () => {
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // };
   // className={`main-height ${toggleNav ? `site-head-open` : ``}`}
   // transition-fade
   return (

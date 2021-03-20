@@ -75,9 +75,15 @@ const BlogIndex = ({ data }, location) => {
 
             <h1 className="landing-h1">{exhibition.node.title}</h1>
             <ul className="exhibition-date-duration">
-              <li>{exhibition.node.dateFrom}</li>
+              <li>
+                {exhibition.node.dateFrom}
+                <br />
+              </li>
               <li className="date-duration-line" />
-              <li>{exhibition.node.dateTo}</li>
+              <li>
+                <br />
+                {exhibition.node.dateTo}
+              </li>
             </ul>
             <div className="divider-lg" />
             <h4>{excerptFirst(exhibition.node.description)}</h4>
@@ -87,7 +93,12 @@ const BlogIndex = ({ data }, location) => {
             {/* <button className="button primary landing-btn">Read more...</button> */}
             {exhibition.node.virtual_tour_url && (
               <button className="button secondary">
-                <a href={exhibition.node.virtual_tour_url} target="_blank">
+                <a
+                  href={exhibition.node.virtual_tour_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  alt="See Virtual Tour"
+                >
                   See Virtual Tour
                 </a>
               </button>
