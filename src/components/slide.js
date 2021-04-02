@@ -51,7 +51,7 @@ class Slide extends React.Component {
       index
     } = this.props.slide;
     const current = this.props.current;
-    let classNames = "slide";
+    let classNames = "slide__exhibitions";
 
     if (current === index) classNames += " slide--current";
     else if (current - 1 === index) classNames += " slide--previous";
@@ -65,13 +65,15 @@ class Slide extends React.Component {
         onMouseMove={this.handleMouseMove}
         onMouseLeave={this.handleMouseLeave}
       >
-        <div className="slide__image-wrapper">
-          <Img
-            fluid={thumbnail.fluid}
-            alt={headline}
-            className="slide__image"
-          />
-        </div>
+        {thumbnail && (
+          <div className="slide__image-wrapper">
+            <Img
+              fluid={thumbnail.fluid}
+              alt={headline}
+              className="slide__image"
+            />
+          </div>
+        )}
 
         <article className="slide__content">
           <h2 className="slide__headline">{headline}</h2>
@@ -80,6 +82,12 @@ class Slide extends React.Component {
             <li className="date-duration-line" />
             <li>{dateTo}</li>
           </ul>
+          <button
+            className="slide__action btn primary"
+            style={{ marginRight: 15 }}
+          >
+            More info
+          </button>
           {virtualTourUrl && (
             <button className="slide__action btn">
               <a
