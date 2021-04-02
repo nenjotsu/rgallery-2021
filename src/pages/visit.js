@@ -4,6 +4,7 @@ import Img from "gatsby-image";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import Navigation from "../components/home/navigation";
 
 import "../utils/normalize.css";
 import "../utils/css/screen.css";
@@ -14,6 +15,7 @@ const VisitPage = ({ data }, location) => {
   return (
     <Layout title={siteTitle}>
       <SEO title="Visit" keywords={[`rgallery`, `schedule`, `visit`]} />
+      <Navigation logo={data.logo.childImageSharp.fixed} />
 
       <article className="post-content page-template no-image">
         <div className="post-content-body">
@@ -137,16 +139,23 @@ const indexQuery = graphql`
         title
       }
     }
-    photo: file(relativePath: { eq: "about.jpg" }) {
+    logo: file(relativePath: { eq: "horizontal-transparent.png" }) {
+      childImageSharp {
+        fixed(height: 50) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    photo: file(relativePath: { eq: "landing.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1360) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    photo2: file(relativePath: { eq: "fabio-comparelli-696506-unsplash.jpg" }) {
+    photo2: file(relativePath: { eq: "07.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1360) {
+        fluid(maxWidth: 360) {
           ...GatsbyImageSharpFluid
         }
       }

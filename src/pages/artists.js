@@ -27,47 +27,6 @@ const ArtistsPage = ({ data }, location) => {
         <div className="post-content-body">
           <h2 id="grid-system">Represented Artists Bio</h2>
           <hr />
-          {/* <div className="row">
-            <div className="col-4 text-center">
-              <a href="#mori">Mori</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#joel-chavez">Joel Chavez</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#luke-alarcon">Luke Alarcon</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#aldrine-alarcon">Aldrine Alarcon</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#didier-alarcon">Didier Alarcon</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#renz-guilas">Renz Guilas</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#laine-alba">Laine Alba</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#macky-tadique">Macky Tadique</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#aka-chan">Aka Chan</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#rejih-quinia">Rejih Quinia</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#thirdy-bustamante">Thirdy Bustamante</a>
-            </div>
-            <div className="col-4 text-center">
-              <a href="#win-castle">Win Castle</a>
-            </div>
-          </div> */}
-
-          {/* <hr /> */}
-
           {artists.map(({ node: a }) => {
             return (
               <div className="row" id="mori">

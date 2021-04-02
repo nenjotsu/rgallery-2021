@@ -189,11 +189,12 @@ h3 {
 .slider__controls .btn--previous > * {
   transform: rotate(180deg);
 }
-.slider {
+.slider__exhibitions {
   --slide-size: 90vmin;
   --slide-margin: 4vmin;
   height: var(--slide-size);
   margin: 0 auto;
+  margin-top: 5rem;
   position: relative;
   /* width: var(--slide-size); */
   width: 100vmax;
@@ -205,7 +206,7 @@ h3 {
   position: absolute;
   transition: transform var(--base-duration) cubic-bezier(0.25, 1, 0.35, 1);
 }
-.slide {
+.slide__exhibitions {
   align-items: center;
   color: #1f1f22;
   display: flex;

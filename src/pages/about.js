@@ -4,6 +4,7 @@ import Img from "gatsby-image";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import Navigation from "../components/home/navigation";
 
 import "../utils/normalize.css";
 import "../utils/css/screen.css";
@@ -14,6 +15,7 @@ const AboutPage = ({ data }, location) => {
   return (
     <Layout title={siteTitle}>
       <SEO title="About" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
+      <Navigation logo={data.logo.childImageSharp.fixed} />
 
       <article className="post-content page-template no-image">
         <div className="post-content-body">
@@ -51,26 +53,6 @@ const AboutPage = ({ data }, location) => {
             reflect the thriving borderless multi-dimensional environments of
             scholarship, artistic expression and the world we lived in.
           </p>
-          {/* <p>
-            London comes with photo-centric main layout best suited to
-            photography, graphics portfolios and other image-heavy uses.
-          </p>
-          <p>
-            Both post and page templates are light and minimal, with all the
-            focus on the content while the design of the theme gets out of the
-            way. Beneath the hood, London enjoys the full power of the{" "}
-            <a href="https://docs.ghost.org/api/handlebars-themes/">
-              Ghost Handlebars Theme API
-            </a>{" "}
-            to provide limitless customisation options and dynamic styles.
-          </p>
-          <p>
-            Don't forget to check out the{" "}
-            <a href="https://docs.ghost.org/integrations/">
-              Ghost Integrations Directory
-            </a>{" "}
-            for more ways to integrate Ghost with your favourite services.
-          </p> */}
         </div>
       </article>
     </Layout>
@@ -82,6 +64,13 @@ const indexQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    logo: file(relativePath: { eq: "horizontal-transparent.png" }) {
+      childImageSharp {
+        fixed(height: 50) {
+          ...GatsbyImageSharpFixed
+        }
       }
     }
     photo: file(relativePath: { eq: "about.jpg" }) {

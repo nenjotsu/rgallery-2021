@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
+import { Carousel } from "react-responsive-carousel";
 import isEmpty from "lodash/isEmpty";
 // import { Link } from "gatsby"
 // import TransitionLink from "gatsby-plugin-transition-link"
@@ -18,14 +19,16 @@ import { excerptFirst, excerptSecond } from "../utils/helpers";
 import "../utils/normalize.css";
 import "../utils/css/screen.css";
 
-const showAllConsole = false;
+const showAllConsole = true;
 
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 const BlogIndex = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title;
   // const posts = data.allMarkdownRemark.edges
-  const sizes = data.allStrapiSizes.edges;
+  // const sizes = data.allStrapiSizes.edges;
   const exhibitions = data.allStrapiExhibitions.edges;
+  const banners = data.allStrapiBanners.edges;
+  const articles = data.allStrapiArticles.edges;
 
   const [exhibitionIndex, setExhibitionIndex] = React.useState(0);
   const [exhibition, setExhibition] = React.useState(exhibitions[0]);
@@ -43,15 +46,15 @@ const BlogIndex = ({ data }, location) => {
 
   React.useEffect(() => {
     setExhibition(exhibitions[exhibitionIndex]);
-    console.log("exhibition", exhibitionIndex, exhibition);
   }, [exhibitionIndex]);
 
   let postCounter = 0;
 
   if (showAllConsole) {
-    console.log("exhibitions", exhibitions);
-    console.log("sizes", sizes);
-    console.log("exhibition", exhibition);
+    // console.log("exhibitions", exhibitions);
+    // console.log("sizes", sizes);
+    // console.log("exhibition", exhibition);
+    console.log("articles", articles);
   }
 
   return (
@@ -61,12 +64,39 @@ const BlogIndex = ({ data }, location) => {
         keywords={["philippines", "art", "gallery", "contemporary"]}
       />
       <div className="row">
+        <Navigation logo={data.logo.childImageSharp.fixed} />
+      </div>
+      <div className="row">
+        <Carousel
+          showArrows={true}
+          onChange={() => {}}
+          onClickItem={() => {}}
+          onClickThumb={() => {}}
+          autoPlay={false}
+          stopOnHover={false}
+          infiniteLoop={true}
+          swipeable
+          dynamicHeight
+          emulateTouch
+          interval={5000}
+        >
+          {banners.map(({ node: b }) => (
+            <div>
+              <Img fluid={b.cover.childImageSharp.fluid} />
+              <div className="legend">
+                <h4>{b.title}</h4>
+                <p>{b.description}</p>
+              </div>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+      <div className="row">
         <div className="col-6 no-padding landing-content">
-          <Navigation logo={data.logo.childImageSharp.fixed} />
           <div className="landing-left-content">
-            <a onClick={handlePrev}>
+            {/* <a onClick={handlePrev}>
               <div className="landing-left-arrow">&lsaquo;</div>
-            </a>
+            </a> */}
             <h3 className="landing-h3">
               {exhibition.node.isCurrent
                 ? "Current Exhibition"
@@ -106,15 +136,15 @@ const BlogIndex = ({ data }, location) => {
           </div>
         </div>
         <div className="col-6 no-padding landing-content">
-          <a onClick={handleNext}>
+          {/* <a onClick={handleNext}>
             <div className="landing-right-arrow">&rsaquo;</div>
-          </a>
+          </a> */}
           <div className="text-contemporary">
             <Img fixed={data.floatingContemporary.childImageSharp.fixed} />
           </div>
           <Img fluid={exhibition.node.thumbnail.childImageSharp.fluid} />
         </div>
-        <div className="quick-preview-artworks">
+        {/* <div className="quick-preview-artworks">
           {exhibition.node.artworks.length > 0 &&
             exhibition.node.artworks
               .filter((art, index) => {
@@ -126,7 +156,7 @@ const BlogIndex = ({ data }, location) => {
                   fixed={art.thumbnail.childImageSharp.fixed}
                 />
               ))}
-        </div>
+        </div> */}
       </div>
     </Layout>
   );
@@ -226,16 +256,16 @@ const indexQuery = graphql`
         }
       }
     }
-    allStrapiSizes(limit: 10) {
-      edges {
-        node {
-          id
-          title
-          description
-          isActive
-        }
-      }
-    }
+    # allStrapiSizes(limit: 10) {
+    #   edges {
+    #     node {
+    #       id
+    #       title
+    #       description
+    #       isActive
+    #     }
+    #   }
+    # }
     allStrapiExhibitions(
       limit: 10
       sort: { fields: dateTo, order: DESC } # filter: { isActive: { eq: true } }
@@ -256,16 +286,51 @@ const indexQuery = graphql`
               }
             }
           }
-          artworks {
-            thumbnail {
-              childImageSharp {
-                fixed(height: 150) {
-                  ...GatsbyImageSharpFixed
-                }
+          # artworks {
+          #   thumbnail {
+          #     childImageSharp {
+          #       fixed(height: 150) {
+          #         ...GatsbyImageSharpFixed
+          #       }
+          #     }
+          #   }
+          # }
+          virtual_tour_url
+        }
+      }
+    }
+    allStrapiBanners(limit: 20) {
+      edges {
+        node {
+          id
+          title
+          description
+          cover {
+            childImageSharp {
+              fluid(maxWidth: 1360) {
+                ...GatsbyImageSharpFluid
               }
             }
           }
-          virtual_tour_url
+        }
+      }
+    }
+    allStrapiArticles(limit: 3) {
+      edges {
+        node {
+          id
+          title
+          slug
+          description
+          created_at(formatString: "MMMM DD, YYYY")
+          cover_photo {
+            childImageSharp {
+              fluid(maxWidth: 1360) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          body
         }
       }
     }
