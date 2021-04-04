@@ -1,7 +1,6 @@
 import React from "react";
-import window from "global";
 import Img from "gatsby-image";
-import _get from "lodash/get";
+import { Link } from "gatsby";
 
 class Slide extends React.Component {
   constructor(props) {
@@ -43,6 +42,7 @@ class Slide extends React.Component {
 
   render() {
     const {
+      id,
       thumbnail,
       virtualTourUrl,
       headline,
@@ -62,6 +62,7 @@ class Slide extends React.Component {
         ref={this.slide}
         className={classNames}
         onClick={this.handleSlideClick}
+        onKeyDown={this.handleSlideClick}
         onMouseMove={this.handleMouseMove}
         onMouseLeave={this.handleMouseLeave}
       >
@@ -82,11 +83,12 @@ class Slide extends React.Component {
             <li className="date-duration-line" />
             <li>{dateTo}</li>
           </ul>
+
           <button
             className="slide__action btn primary"
             style={{ marginRight: 15 }}
           >
-            More info
+            <Link to={`/${id}`}>More info</Link>
           </button>
           {virtualTourUrl && (
             <button className="slide__action btn">

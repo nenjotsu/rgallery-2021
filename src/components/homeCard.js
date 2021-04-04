@@ -33,7 +33,6 @@ class Card extends React.Component {
   }
 
   render() {
-    console.log(this.state.imageNumber);
     return (
       <div>
         <div className="card">

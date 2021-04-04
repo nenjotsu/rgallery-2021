@@ -1,15 +1,15 @@
 import React from "react";
 import Slide from "./slide";
 
-const SliderControl = ({ type, title, handleClick }) => {
-  return (
-    <button className={`btn btn--${type}`} title={title} onClick={handleClick}>
-      <svg className="icon" viewBox="0 0 24 24">
-        <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-      </svg>
-    </button>
-  );
-};
+// const SliderControl = ({ type, title, handleClick }) => {
+//   return (
+//     <button className={`btn btn--${type}`} title={title} onClick={handleClick}>
+//       <svg className="icon" viewBox="0 0 24 24">
+//         <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+//       </svg>
+//     </button>
+//   );
+// };
 
 class Slider extends React.Component {
   constructor(props) {
@@ -46,7 +46,10 @@ class Slider extends React.Component {
   }
 
   render() {
-    const { current, direction } = this.state;
+    const {
+      current
+      // direction
+    } = this.state;
     const { slides, heading } = this.props;
     const headingId = `slider-heading__${heading
       .replace(/\s+/g, "-")

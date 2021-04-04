@@ -12,3 +12,10 @@ export const excerptSecond = (str = "") => {
   }
   return str;
 };
+
+export const elipsis = (str = "", trim = 30) => {
+  if (str.length != null) {
+    return `${str.substring(0, trim)}...`;
+  }
+  return str;
+};

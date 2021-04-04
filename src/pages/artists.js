@@ -9,11 +9,9 @@ import Navigation from "../components/home/navigation";
 import "../utils/normalize.css";
 import "../utils/css/screen.css";
 
-const ArtistsPage = ({ data }, location) => {
+const ArtistsPage = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
   const artists = data.allStrapiArtists.edges;
-
-  console.log("artists", artists);
 
   return (
     <Layout title={siteTitle}>
@@ -29,7 +27,7 @@ const ArtistsPage = ({ data }, location) => {
           <hr />
           {artists.map(({ node: a }) => {
             return (
-              <div className="row" id="mori">
+              <div className="row" key={a.id}>
                 <div className="col-6">
                   <figure className="kg-card kg-image-card pad-2">
                     <Img

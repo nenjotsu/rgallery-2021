@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import { Carousel } from "react-responsive-carousel";
 // import ReactMarkdown from "react-markdown";
-// import { Link } from "gatsby"
+import { Link } from "gatsby";
 // import TransitionLink from "gatsby-plugin-transition-link"
 
 import Layout from "../components/layout";
@@ -31,8 +31,8 @@ const BlogIndex = ({ data }, location) => {
   const banners = data.allStrapiBanners.edges;
   const articles = data.allStrapiArticles.edges;
 
-  const [exhibitionIndex, setExhibitionIndex] = React.useState(0);
-  const [exhibition, setExhibition] = React.useState(exhibitions[0]);
+  // const [exhibitionIndex, setExhibitionIndex] = React.useState(0);
+  const [exhibition] = React.useState(exhibitions[0]);
 
   // const handleNext = () => {
   //   if (exhibitionIndex < exhibitions.length - 1) {
@@ -45,9 +45,9 @@ const BlogIndex = ({ data }, location) => {
   //   }
   // };
 
-  React.useEffect(() => {
-    setExhibition(exhibitions[exhibitionIndex]);
-  }, [exhibitionIndex]);
+  // React.useEffect(() => {
+  //   setExhibition(exhibitions[exhibitionIndex]);
+  // }, [exhibitionIndex]);
 
   // let postCounter = 0;
 
@@ -55,7 +55,7 @@ const BlogIndex = ({ data }, location) => {
     // console.log("exhibitions", exhibitions);
     // console.log("sizes", sizes);
     // console.log("exhibition", exhibition);
-    console.log("articles", articles);
+    // console.log("articles", articles);
   }
 
   return (
@@ -100,14 +100,19 @@ const BlogIndex = ({ data }, location) => {
           <div className="row main-news">
             {articles.map(({ node: a }) => (
               <div className="col-4" key={a.id}>
-                <figure className="kg-card-exhibitions kg-image-card">
-                  <Img
-                    fluid={a.cover_photo.childImageSharp.fluid}
-                    className="kg-image"
-                  />
-                  <figcaption>{a.slug}</figcaption>
-                </figure>
-                <h4>{a.title}</h4>
+                <Link to={`/${a.slug}`}>
+                  <figure className="kg-card-exhibitions kg-image-card">
+                    <Img
+                      fluid={a.cover_photo.childImageSharp.fluid}
+                      className="kg-image"
+                    />
+                    <figcaption>{a.slug}</figcaption>
+                  </figure>
+                </Link>
+                <Link to={`/${a.slug}`}>
+                  <h4>{a.title}</h4>
+                </Link>
+
                 <p>{a.description}</p>
               </div>
             ))}
@@ -144,7 +149,9 @@ const BlogIndex = ({ data }, location) => {
             <p className="description-sm">
               {excerptSecond(exhibition.node.description)}
             </p>
-            {/* <button className="button primary landing-btn">Read more...</button> */}
+            <button className="button primary landing-btn">
+              <Link to={`/${exhibition.node.id}`}>Read more...</Link>
+            </button>
             {exhibition.node.virtual_tour_url && (
               <button className="button secondary">
                 <a
@@ -201,20 +208,20 @@ const indexQuery = graphql`
         description
       }
     }
-    phSquare: file(relativePath: { eq: "img-placeholder-square.jpg" }) {
-      childImageSharp {
-        fixed(height: 150) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    landingPhoto: file(relativePath: { eq: "landing/sesami-cid.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1360) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
+    # phSquare: file(relativePath: { eq: "img-placeholder-square.jpg" }) {
+    #   childImageSharp {
+    #     fixed(height: 150) {
+    #       ...GatsbyImageSharpFixed
+    #     }
+    #   }
+    # }
+    # landingPhoto: file(relativePath: { eq: "landing/sesami-cid.png" }) {
+    #   childImageSharp {
+    #     fluid(maxWidth: 1360) {
+    #       ...GatsbyImageSharpFluid
+    #     }
+    #   }
+    # }
     logo: file(relativePath: { eq: "horizontal-transparent.png" }) {
       childImageSharp {
         fixed(height: 50) {
@@ -222,13 +229,13 @@ const indexQuery = graphql`
         }
       }
     }
-    burgerMenu: file(relativePath: { eq: "burger-menu.png" }) {
-      childImageSharp {
-        fixed(height: 17) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
+    # burgerMenu: file(relativePath: { eq: "burger-menu.png" }) {
+    #   childImageSharp {
+    #     fixed(height: 17) {
+    #       ...GatsbyImageSharpFixed
+    #     }
+    #   }
+    # }
     floatingContemporary: file(
       relativePath: { eq: "landing/contemporary-text.png" }
     ) {
@@ -238,55 +245,55 @@ const indexQuery = graphql`
         }
       }
     }
-    currentExhibitions: allFile(
-      filter: {
-        sourceInstanceName: { eq: "exhibitions" }
-        extension: { eq: "md" }
-      }
-      limit: 5
-    ) {
-      edges {
-        node {
-          relativeDirectory
-          extension
-          name
-          childMarkdownRemark {
-            id
-            excerpt(pruneLength: 160)
-            html
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              description
-            }
-          }
-        }
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 1360) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    # currentExhibitions: allFile(
+    #   filter: {
+    #     sourceInstanceName: { eq: "exhibitions" }
+    #     extension: { eq: "md" }
+    #   }
+    #   limit: 5
+    # ) {
+    #   edges {
+    #     node {
+    #       relativeDirectory
+    #       extension
+    #       name
+    #       childMarkdownRemark {
+    #         id
+    #         excerpt(pruneLength: 160)
+    #         html
+    #         fields {
+    #           slug
+    #         }
+    #         frontmatter {
+    #           title
+    #           description
+    #         }
+    #       }
+    #     }
+    #   }
+    # }
+    # allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    #   edges {
+    #     node {
+    #       excerpt
+    #       fields {
+    #         slug
+    #       }
+    #       frontmatter {
+    #         date(formatString: "MMMM DD, YYYY")
+    #         title
+    #         description
+    #         thumbnail {
+    #           childImageSharp {
+    #             fluid(maxWidth: 1360) {
+    #               ...GatsbyImageSharpFluid
+    #             }
+    #           }
+    #         }
+    #       }
+    #     }
+    #   }
+    # }
     # allStrapiSizes(limit: 10) {
     #   edges {
     #     node {
@@ -298,8 +305,9 @@ const indexQuery = graphql`
     #   }
     # }
     allStrapiExhibitions(
-      limit: 10
-      sort: { fields: dateTo, order: DESC } # filter: { isActive: { eq: true } }
+      limit: 1
+      sort: { fields: dateTo, order: DESC }
+      filter: { isActive: { eq: true } }
     ) {
       edges {
         node {
@@ -318,6 +326,7 @@ const indexQuery = graphql`
               }
             }
           }
+          virtual_tour_url
           # artworks {
           #   thumbnail {
           #     childImageSharp {
@@ -327,7 +336,6 @@ const indexQuery = graphql`
           #     }
           #   }
           # }
-          virtual_tour_url
         }
       }
     }
@@ -347,13 +355,14 @@ const indexQuery = graphql`
         }
       }
     }
-    allStrapiArticles(limit: 3) {
+    allStrapiArticles(limit: 3, sort: { fields: published_at, order: DESC }) {
       edges {
         node {
           id
           title
           slug
           description
+          body
           created_at(formatString: "MMMM DD, YYYY")
           cover_photo {
             childImageSharp {
@@ -362,7 +371,6 @@ const indexQuery = graphql`
               }
             }
           }
-          body
         }
       }
     }
