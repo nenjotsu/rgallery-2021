@@ -5,6 +5,10 @@
   margin: 7vw 0;
 }
 
+.kg-card-exhibitions {
+  margin: 0 1vw;
+}
+
 .kg-embed-card {
   display: flex;
   flex-direction: column;
@@ -17,9 +21,10 @@
   width: 100%;
 }
 
-.kg-card figcaption {
+.kg-card figcaption,
+.kg-card-exhibitions figcaption {
   padding: 1.5rem;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   line-height: 1.4em;
   font-weight: 600;
   color: var(--color-base);

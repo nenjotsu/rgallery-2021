@@ -3,7 +3,8 @@
   "private": true,
   "description": "A custom, image-centric theme for Gatsby",
   "version": "1.0.0",
-  "author": "nenjotsu <nenjotsud@gmail.com>",
+  "author": "nenjotsu <nenjotsu@gmail.com>",
+  "sideEffects": true,
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -17,7 +18,7 @@
   },
   "dependencies": {
     "gatsby": "^2.4.2",
-    "gatsby-cli": "^2.16.2",
+    "gatsby-cli": "^3.2.0",
     "gatsby-image": "^2.0.41",
     "gatsby-plugin-feed": "^2.2.0",
     "gatsby-plugin-google-analytics": "^2.0.19",
@@ -45,6 +46,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-markdown": "^5.0.3",
     "react-responsive-carousel": "^3.2.18",
     "typeface-alegreya": "^0.0.69",
     "typeface-merriweather": "0.0.72",
@@ -61,19 +63,6 @@
     "prettier": "^1.17.0",
     "pretty-quick": "^1.10.0"
   },
-  "overrideBrowserslist": [
-    "> 1%",
-    "ie >= 8",
-    "edge >= 15",
-    "ie_mob >= 10",
-    "ff >= 45",
-    "chrome >= 45",
-    "safari >= 7",
-    "opera >= 23",
-    "ios >= 7",
-    "android >= 4",
-    "bb >= 10"
-  ],
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
     "gatsby",

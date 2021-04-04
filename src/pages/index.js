@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import { Carousel } from "react-responsive-carousel";
-import isEmpty from "lodash/isEmpty";
+import ReactMarkdown from "react-markdown";
 // import { Link } from "gatsby"
 // import TransitionLink from "gatsby-plugin-transition-link"
 
@@ -18,6 +18,7 @@ import { excerptFirst, excerptSecond } from "../utils/helpers";
 // import "../utils/global.scss"
 import "../utils/normalize.css";
 import "../utils/css/screen.css";
+import "../utils/css/carousel.css";
 
 const showAllConsole = true;
 
@@ -81,7 +82,7 @@ const BlogIndex = ({ data }, location) => {
           interval={5000}
         >
           {banners.map(({ node: b }) => (
-            <div>
+            <div key={b.id}>
               <Img fluid={b.cover.childImageSharp.fluid} />
               <div className="legend">
                 <h4>{b.title}</h4>
@@ -91,6 +92,28 @@ const BlogIndex = ({ data }, location) => {
           ))}
         </Carousel>
       </div>
+      <article className="post-content-lg page-template no-image">
+        <div className="post-content-body">
+          <h2 id="grid-system">News</h2>
+          <hr />
+
+          <div className="row main-news">
+            {articles.map(({ node: a }) => (
+              <div className="col-4" key={a.id}>
+                <figure className="kg-card-exhibitions kg-image-card">
+                  <Img
+                    fluid={a.cover_photo.childImageSharp.fluid}
+                    className="kg-image"
+                  />
+                  <figcaption>{a.slug}</figcaption>
+                </figure>
+                <h4>{a.title}</h4>
+                <p>{a.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </article>
       <div className="row">
         <div className="col-6 no-padding landing-content">
           <div className="landing-left-content">
@@ -102,6 +125,7 @@ const BlogIndex = ({ data }, location) => {
                 ? "Current Exhibition"
                 : "Previous Exhibition"}
             </h3>
+            <hr />
 
             <h1 className="landing-h1">{exhibition.node.title}</h1>
             <ul className="exhibition-date-duration">
@@ -133,6 +157,13 @@ const BlogIndex = ({ data }, location) => {
                 </a>
               </button>
             )}
+
+            {/* <ReactMarkdown
+              source={exhibition.node.content} 
+              transformImageUri={uri =>
+                uri.startsWith("http") ? uri : `http://3.1.35.180:1337${uri}`
+              }
+            /> */}
           </div>
         </div>
         <div className="col-6 no-padding landing-content">
@@ -279,6 +310,7 @@ const indexQuery = graphql`
           dateFrom(formatString: "MMMM DD, YYYY")
           dateTo(formatString: "MMMM DD, YYYY")
           description
+          content
           thumbnail {
             childImageSharp {
               fluid(maxWidth: 1360) {

@@ -17,11 +17,12 @@ const VisitPage = ({ data }, location) => {
       <SEO title="Visit" keywords={[`rgallery`, `schedule`, `visit`]} />
       <Navigation logo={data.logo.childImageSharp.fixed} />
 
-      <article className="post-content page-template no-image">
+      <article className="post-content-md page-template no-image">
         <div className="post-content-body">
           <h2 id="clean-minimal-and-deeply-customisable-london-is-a-theme-made-for-people-who-appreciate-simple-lines-">
             Important Announcements
           </h2>
+          <hr />
           <p>
             <strong>Covid-19 Advisory</strong>: As a precautionary measure, the
             R Gallery is closed to the public until further notice. The public’s
@@ -56,13 +57,13 @@ const VisitPage = ({ data }, location) => {
             /> */}
           </div>
 
-          <figure className="kg-card kg-image-card kg-width-full">
+          {/* <figure className="kg-card kg-image-card kg-width-full">
             <Img
               fluid={data.photo.childImageSharp.fluid}
               className="kg-image"
             />
             <figcaption>Caption of this image</figcaption>
-          </figure>
+          </figure> */}
           <h3 id="dynamic-styles">Visitor’s Information</h3>
           <div className="row">
             <div className="col-6">

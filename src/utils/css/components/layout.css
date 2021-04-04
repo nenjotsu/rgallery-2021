@@ -52,6 +52,14 @@ hr.style1::after {
   opacity: 1;
 }
 
+.main-news > h4 {
+  margin: 1em;
+}
+
+nav {
+  background: #fff;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

@@ -75,16 +75,17 @@ module.exports = {
         postCssPlugins: [
           require("postcss-easy-import")(),
           require("postcss-custom-properties")({ preserve: false }),
-          require("postcss-color-function")(),
-          require("autoprefixer")({ browsers: ["last 2 versions"] })
+          require("postcss-color-function")()
+          // require("autoprefixer")({ browsers: ["last 2 versions"] })
         ]
       }
     },
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
-        printRejected: true // Print removed selectors and processed file names
-        // develop: true, // Enable while using `gatsby develop`
+        printRejected: true, // Print removed selectors and processed file names
+        develop: true, // Enable while using `gatsby develop`
+        ignore: ["/src/utils/css/carousel.css", "/src/utils/css/screen.css"]
         // tailwind: true, // Enable tailwindcss support
         // whitelist: ['whitelist'], // Don't remove this selector
         // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
