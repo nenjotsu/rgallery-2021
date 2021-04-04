@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import { Carousel } from "react-responsive-carousel";
-import ReactMarkdown from "react-markdown";
+// import ReactMarkdown from "react-markdown";
 // import { Link } from "gatsby"
 // import TransitionLink from "gatsby-plugin-transition-link"
 
@@ -20,7 +20,7 @@ import "../utils/normalize.css";
 import "../utils/css/screen.css";
 import "../utils/css/carousel.css";
 
-const showAllConsole = true;
+const showAllConsole = false;
 
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 const BlogIndex = ({ data }, location) => {
@@ -34,22 +34,22 @@ const BlogIndex = ({ data }, location) => {
   const [exhibitionIndex, setExhibitionIndex] = React.useState(0);
   const [exhibition, setExhibition] = React.useState(exhibitions[0]);
 
-  const handleNext = () => {
-    if (exhibitionIndex < exhibitions.length - 1) {
-      setExhibitionIndex(exhibitionIndex + 1);
-    }
-  };
-  const handlePrev = () => {
-    if (exhibitionIndex > 0) {
-      setExhibitionIndex(exhibitionIndex - 1);
-    }
-  };
+  // const handleNext = () => {
+  //   if (exhibitionIndex < exhibitions.length - 1) {
+  //     setExhibitionIndex(exhibitionIndex + 1);
+  //   }
+  // };
+  // const handlePrev = () => {
+  //   if (exhibitionIndex > 0) {
+  //     setExhibitionIndex(exhibitionIndex - 1);
+  //   }
+  // };
 
   React.useEffect(() => {
     setExhibition(exhibitions[exhibitionIndex]);
   }, [exhibitionIndex]);
 
-  let postCounter = 0;
+  // let postCounter = 0;
 
   if (showAllConsole) {
     // console.log("exhibitions", exhibitions);
@@ -73,7 +73,7 @@ const BlogIndex = ({ data }, location) => {
           onChange={() => {}}
           onClickItem={() => {}}
           onClickThumb={() => {}}
-          autoPlay={false}
+          autoPlay={true}
           stopOnHover={false}
           infiniteLoop={true}
           swipeable
