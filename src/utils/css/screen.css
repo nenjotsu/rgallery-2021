@@ -23,7 +23,7 @@ production stylesheet in assets/built/screen.css using gulp dev
 /* @import "components/home.css"; */
 @import "components/home-card.css";
 @import "components/landing.css";
-@import "carousel.css";
+/* @import "carousel.css"; */
 
 /* Main - Theme styles
 /* ---------------------------------------------------------- */
@@ -525,7 +525,13 @@ body {
 .post-content-md {
   max-width: 960px;
   margin: 0 auto;
-  /* padding: 6vw 0; */
+  padding: 4vw 0;
+}
+
+.post-content-lg {
+  max-width: 1336px;
+  margin: 0 auto;
+  padding: 4vw 0;
 }
 
 .post-content-header {
@@ -584,7 +590,7 @@ body {
 .post-content-body h5,
 .post-content-body h6 {
   color: var(--color-base);
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
 }
 
 .post-content-body li {
