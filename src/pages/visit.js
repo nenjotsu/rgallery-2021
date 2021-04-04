@@ -29,9 +29,9 @@ const VisitPage = ({ data }, location) => {
             safety and well-being are our priority at this time. In the
             meantime, special on-site viewings are by appointment only and can
             be scheduled with the R Gallery by sending an email to{" "}
-            <a href="mailto:rgallery.ph@gmail.com">rgallery.ph@gmail.com</a>.
-            Further announcements about the re-opening of the Gallery will be
-            made through our online platforms.
+            <a href="mailto:admin@rgallery.ph">admin@rgallery.ph</a>. Further
+            announcements about the re-opening of the Gallery will be made
+            through our online platforms.
           </p>
 
           <div className="card">
@@ -95,8 +95,8 @@ const VisitPage = ({ data }, location) => {
           <p>
             If you plan to visit the Gallery, please contact us ahead of time so
             we can help you plan your day. To book our tour, please email{" "}
-            <a href="mailto:rgallery.ph@gmail.com">rgallery.ph@gmail.com</a> or
-            call (+639)17-7180-777.
+            <a href="mailto:admin@rgallery.ph">admin@rgallery.ph</a> or call
+            (+639)17-7180-777.
           </p>
           <h5 id="dynamic-styles">Contact us</h5>
           <p>
@@ -104,7 +104,7 @@ const VisitPage = ({ data }, location) => {
             connect with us through any of our channels below. To inquire on
             available work of art, please call or text us at (+639)17-7180-777.
             You may also send us an email to{" "}
-            <a href="mailto:rgallery.ph@gmail.com">rgallery.ph@gmail.com</a>.
+            <a href="mailto:admin@rgallery.ph">admin@rgallery.ph</a>.
           </p>
           <p>26 V. Luna Ave, Diliman, Quezon City, 1100 Metro Manila.</p>
           {/* <p>

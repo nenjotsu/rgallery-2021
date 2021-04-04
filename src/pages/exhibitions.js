@@ -17,6 +17,7 @@ const ExhibitionsPage = ({ data }) => {
   const exhibitions = data.allStrapiExhibitions.edges;
 
   const exhibitionsSlides = exhibitions.map(({ node }, index) => ({
+    id: node.id,
     index,
     headline: node.title,
     virtualTourUrl: node.virtual_tour_url,
@@ -51,20 +52,6 @@ const indexQuery = graphql`
         description
       }
     }
-    phSquare: file(relativePath: { eq: "img-placeholder-square.jpg" }) {
-      childImageSharp {
-        fixed(height: 150) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    landingPhoto: file(relativePath: { eq: "landing/sesami-cid.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1360) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     logo: file(relativePath: { eq: "horizontal-transparent.png" }) {
       childImageSharp {
         fixed(height: 50) {
@@ -72,86 +59,10 @@ const indexQuery = graphql`
         }
       }
     }
-    burgerMenu: file(relativePath: { eq: "burger-menu.png" }) {
-      childImageSharp {
-        fixed(height: 17) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    floatingContemporary: file(
-      relativePath: { eq: "landing/contemporary-text.png" }
-    ) {
-      childImageSharp {
-        fixed(height: 280) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    currentExhibitions: allFile(
-      filter: {
-        sourceInstanceName: { eq: "exhibitions" }
-        extension: { eq: "md" }
-      }
-      limit: 5
-    ) {
-      edges {
-        node {
-          relativeDirectory
-          extension
-          name
-          childMarkdownRemark {
-            id
-            excerpt(pruneLength: 160)
-            html
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              description
-            }
-          }
-        }
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 1360) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    allStrapiSizes(limit: 10) {
-      edges {
-        node {
-          id
-          title
-          description
-          isActive
-        }
-      }
-    }
     allStrapiExhibitions(
-      # limit: 10
       sort: { fields: dateTo, order: DESC }
-    ) # filter: { isActive: { eq: true } }
-    {
+      filter: { isActive: { eq: true } }
+    ) {
       edges {
         node {
           id

@@ -1,12 +1,7 @@
-import React, { useState } from "react";
-import Img from "gatsby-image";
-// import { Link } from "gatsby"
-import TransitionLink from "gatsby-plugin-transition-link";
-import Link from "gatsby-plugin-transition-link";
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+import React from "react";
 
 const Layout = props => {
-  const { title, children } = props;
+  const { children } = props;
   // const [toggleNav, setToggleNav] = React.useState(false);
 
   // const [showScroll, setShowScroll] = useState(false);

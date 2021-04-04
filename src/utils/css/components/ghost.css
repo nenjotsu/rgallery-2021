@@ -8,6 +8,11 @@
 .kg-card-exhibitions {
   margin: 0 1vw;
 }
+.kg-card-exhibitions:hover {
+  margin: 0 1.5vw;
+  transition: all 0.2s;
+  cursor: pointer;
+}
 
 .kg-embed-card {
   display: flex;
