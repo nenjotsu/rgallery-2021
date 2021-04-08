@@ -519,19 +519,19 @@ body {
 .post-content {
   max-width: 720px;
   margin: 0 auto;
-  padding: 6vw 0;
+  padding: 6vw 2em;
 }
 
 .post-content-md {
   max-width: 960px;
   margin: 0 auto;
-  padding: 4vw 0;
+  padding: 4vw 2em;
 }
 
 .post-content-lg {
   max-width: 1336px;
   margin: 0 auto;
-  padding: 4vw 0;
+  padding: 5vw 2em;
 }
 
 .post-content-header {

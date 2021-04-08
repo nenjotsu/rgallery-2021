@@ -57,6 +57,14 @@
   top: 3px;
 }
 
+.divider-full {
+  margin: 7rem 0;
+  border-bottom: 2px solid #131313;
+  width: 97%;
+  position: relative;
+  top: 3px;
+}
+
 .landing-btn {
   position: relative;
   left: 5.5rem;

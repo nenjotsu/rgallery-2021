@@ -99,6 +99,10 @@ button.primary,
   z-index: 5;
 }
 
+.primary > a {
+  color: #fff;
+}
+
 input[type="submit"].primary:hover,
 input[type="reset"].primary:hover,
 input[type="button"].primary:hover,
