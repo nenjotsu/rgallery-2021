@@ -1,12 +1,13 @@
 import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import _get from "lodash/get";
+import Img from "gatsby-image";
+import { Link } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 import Navigation from "../components/home/navigation";
-import Slider from "../components/slider";
 
 import "../utils/normalize.css";
 import "../utils/css/screen.css";
@@ -16,30 +17,70 @@ const ExhibitionsPage = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
   const exhibitions = data.allStrapiExhibitions.edges;
 
-  const exhibitionsSlides = exhibitions.map(({ node }, index) => ({
-    id: node.id,
-    index,
-    headline: node.title,
-    virtualTourUrl: node.virtual_tour_url,
-    dateFrom: node.dateFrom,
-    dateTo: node.dateTo,
-    thumbnail: _get(node, "thumbnail.childImageSharp", null)
-  }));
-
   return (
     <Layout title={siteTitle}>
       <SEO
         title="RGallery - Contemporary Arts"
         keywords={["philippines", "art", "gallery", "contemporary"]}
       />
-      <div className="row">
-        <div className="col-6 no-padding landing-content">
-          <Navigation logo={data.logo.childImageSharp.fixed} />
+      <Navigation logo={data.logo.childImageSharp.fixed} />
+
+      <article className="post-content-md page-template no-image">
+        <div className="post-content-body">
+          <h2 id="grid-system">Exhibitions</h2>
+          <hr />
+          {exhibitions.map(({ node: a }) => {
+            return (
+              <div className="row" key={a.id}>
+                <div className="col-6">
+                  <h3 className="landing-h3">
+                    {a.isCurrent ? "Current Exhibition" : "Previous Exhibition"}
+                  </h3>
+                  <Link to={`/${a.id}`}>
+                    <figure className="kg-card-exhibitions kg-image-card pad-1">
+                      <Img
+                        fluid={a.thumbnail.childImageSharp.fluid}
+                        className="kg-image"
+                        alt={a.title}
+                      />
+                    </figure>
+                  </Link>
+                </div>
+                <div className="col-6">
+                  <div className="pad-2">
+                    <Link to={`/${a.id}`}>
+                      <h4>{a.title}</h4>
+                    </Link>
+                    <ul className="exhibition-date-duration">
+                      <li>{a.dateFrom}</li>
+                      <li>{`--->`}</li>
+                      <li>{a.dateTo}</li>
+                    </ul>
+                    <p>{a.description}</p>
+                    <button className="button default">
+                      <Link to={`/${a.id}`}>Read more...</Link>
+                    </button>
+                    {a.virtual_tour_url && (
+                      <button className="button primary">
+                        <a
+                          href={a.virtual_tour_url}
+                          target="_blank"
+                          rel="noreferrer"
+                          alt="See Virtual Tour"
+                        >
+                          See Virtual Tour
+                        </a>
+                      </button>
+                    )}
+                    <div className="divider-full" />
+                  </div>
+                </div>
+                <hr />
+              </div>
+            );
+          })}
         </div>
-        <section id="right-scroll">
-          <Slider heading="Exhibitions" slides={exhibitionsSlides} />
-        </section>
-      </div>
+      </article>
     </Layout>
   );
 };

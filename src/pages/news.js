@@ -15,16 +15,6 @@ const ArticlesPage = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
   const articles = data.allStrapiArticles.edges;
 
-  //   const exhibitionsSlides = articles.map(({ node }, index) => ({
-  //     id: node.id,
-  //     index,
-  //     headline: node.title,
-  //     virtualTourUrl: node.virtual_tour_url,
-  //     dateFrom: node.dateFrom,
-  //     dateTo: node.dateTo,
-  //     thumbnail: _get(node, "thumbnail.childImageSharp", null)
-  //   }));
-
   return (
     <Layout title={siteTitle}>
       <SEO
@@ -82,7 +72,7 @@ const indexQuery = graphql`
         }
       }
     }
-    allStrapiArticles(limit: 3, sort: { fields: published_at, order: DESC }) {
+    allStrapiArticles(limit: 20, sort: { fields: published_at, order: DESC }) {
       edges {
         node {
           id
