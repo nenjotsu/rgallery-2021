@@ -164,13 +164,6 @@ const BlogIndex = ({ data }, location) => {
                 </a>
               </button>
             )}
-
-            {/* <ReactMarkdown
-              source={exhibition.node.content} 
-              transformImageUri={uri =>
-                uri.startsWith("http") ? uri : `http://3.1.35.180:1337${uri}`
-              }
-            /> */}
           </div>
         </div>
         <div className="col-6 no-padding landing-content">
