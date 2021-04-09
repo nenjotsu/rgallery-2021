@@ -88,9 +88,7 @@ class ExhibitionPostTemplate extends React.Component {
             <ReactMarkdown
               className="post-content-body"
               source={post.content}
-              transformImageUri={uri =>
-                uri.startsWith("http") ? uri : `http://3.1.35.180:1337${uri}`
-              }
+              transformImageUri={uri => `http://3.1.35.180:1337${uri}`}
             />
           )}
           <hr />
