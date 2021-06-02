@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import ReactMarkdown from "react-markdown";
 import { Link } from "gatsby";
+import isUndefined from "lodash/isUndefined";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -13,10 +14,12 @@ const RelatedPost = ({ node }) => (
   <div className="col-6" key={node.id}>
     <Link to={`/${node.id}`}>
       <figure className="kg-card-exhibitions kg-image-card">
-        <Img
-          fluid={node.thumbnail.childImageSharp.fluid}
-          className="kg-image"
-        />
+        {isUndefined(node.thumbnail) && (
+          <Img
+            fluid={node.thumbnail.childImageSharp.fluid}
+            className="kg-image"
+          />
+        )}
         <figcaption>{node.title}</figcaption>
       </figure>
     </Link>
