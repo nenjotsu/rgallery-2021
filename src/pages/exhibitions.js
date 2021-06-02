@@ -3,6 +3,7 @@ import { graphql, StaticQuery } from "gatsby";
 import _get from "lodash/get";
 import Img from "gatsby-image";
 import { Link } from "gatsby";
+import isUndefined from "lodash/isUndefined";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -36,15 +37,17 @@ const ExhibitionsPage = ({ data }) => {
                   <h3 className="landing-h3">
                     {a.isCurrent ? "Current Exhibition" : "Previous Exhibition"}
                   </h3>
-                  <Link to={`/${a.id}`}>
-                    <figure className="kg-card-exhibitions kg-image-card pad-1">
-                      <Img
-                        fluid={a.thumbnail.childImageSharp.fluid}
-                        className="kg-image"
-                        alt={a.title}
-                      />
-                    </figure>
-                  </Link>
+                  {isUndefined(a.thumbnail) && (
+                    <Link to={`/${a.id}`}>
+                      <figure className="kg-card-exhibitions kg-image-card pad-1">
+                        <Img
+                          fluid={a.thumbnail.childImageSharp.fluid}
+                          className="kg-image"
+                          alt={a.title}
+                        />
+                      </figure>
+                    </Link>
+                  )}
                 </div>
                 <div className="col-6">
                   <div className="pad-2">
