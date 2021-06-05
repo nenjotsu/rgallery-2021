@@ -160,6 +160,8 @@ sub {
 }
 img {
   border: 0;
+}
+p img {
   margin: 1em 0;
 }
 svg:not(:root) {
