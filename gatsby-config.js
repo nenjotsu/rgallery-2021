@@ -117,7 +117,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://3.1.35.180:1337`,
+        apiURL: `https://rgallery.link`,
         queryLimit: 1000, // Default to 100
         contentTypes: [
           `sizes`,
