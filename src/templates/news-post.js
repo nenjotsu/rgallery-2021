@@ -1,12 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
-import ReactMarkdown from "react-markdown";
 import { Link } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Navigation from "../components/home/navigation";
+import Markdown from "../components/Markdown";
 
 const RelatedArticles = ({ node }) => (
   <div className="col-6" key={node.id}>
@@ -67,11 +67,10 @@ class NewsPostTemplate extends React.Component {
           )}
 
           {post.body && (
-            <ReactMarkdown
+            <Markdown
               className="post-content-body"
-              source={post.body}
-              transformImageUri={uri => `https://rgallery.link${uri}`}
-            />
+              // source={post.body}
+            >{post.body}</Markdown>
           )}
           <hr />
           <h2 className="post-content-title">Related News</h2>

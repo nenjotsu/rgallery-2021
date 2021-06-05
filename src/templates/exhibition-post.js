@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
-import ReactMarkdown from "react-markdown";
 import { Link } from "gatsby";
 import isUndefined from "lodash/isUndefined";
+import Markdown from "../components/Markdown";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -88,11 +88,10 @@ class ExhibitionPostTemplate extends React.Component {
           )}
 
           {post.content && (
-            <ReactMarkdown
+            <Markdown
               className="post-content-body"
-              source={post.content}
-              transformImageUri={uri => `https://rgallery.link${uri}`}
-            />
+              // source={post.content}
+            >{post.content}</Markdown>
           )}
           <hr />
           <h2 className="post-content-title">Related Exhibitions</h2>

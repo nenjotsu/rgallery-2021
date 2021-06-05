@@ -2,7 +2,6 @@ import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import { Carousel } from "react-responsive-carousel";
-// import ReactMarkdown from "react-markdown";
 import { Link } from "gatsby";
 // import TransitionLink from "gatsby-plugin-transition-link"
 
