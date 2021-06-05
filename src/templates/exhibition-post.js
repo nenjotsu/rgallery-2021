@@ -14,7 +14,7 @@ const RelatedPost = ({ node }) => (
   <div className="col-6" key={node.id}>
     <Link to={`/${node.id}`}>
       <figure className="kg-card-exhibitions kg-image-card">
-        {isUndefined(node.thumbnail) && (
+        {!isUndefined(node.thumbnail) && (
           <Img
             fluid={node.thumbnail.childImageSharp.fluid}
             className="kg-image"
@@ -91,7 +91,7 @@ class ExhibitionPostTemplate extends React.Component {
             <ReactMarkdown
               className="post-content-body"
               source={post.content}
-              transformImageUri={uri => `http://3.1.35.180:1337${uri}`}
+              transformImageUri={uri => `https://rgallery.link${uri}`}
             />
           )}
           <hr />

@@ -5,7 +5,7 @@ module.exports = {
   siteHeadline: "Contemporary Arts", // Headline for schema.org JSONLD
   description:
     "A bold, minimal theme for RGallery, focused on clean typography & beautiful imagery (This is a placeholder)",
-  url: "https://rgallery.com", // Domain of your site without prefix!
+  url: "https://rgallery.ph", // Domain of your site without prefix!
   prefix: "/",
   author: "nenjotsu",
   twitter: "nenjotsu",

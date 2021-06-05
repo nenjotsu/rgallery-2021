@@ -70,7 +70,7 @@ class NewsPostTemplate extends React.Component {
             <ReactMarkdown
               className="post-content-body"
               source={post.body}
-              transformImageUri={uri => `http://3.1.35.180:1337${uri}`}
+              transformImageUri={uri => `https://rgallery.link${uri}`}
             />
           )}
           <hr />

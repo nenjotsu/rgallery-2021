@@ -37,7 +37,7 @@ const ExhibitionsPage = ({ data }) => {
                   <h3 className="landing-h3">
                     {a.isCurrent ? "Current Exhibition" : "Previous Exhibition"}
                   </h3>
-                  {isUndefined(a.thumbnail) && (
+                  {!isUndefined(a.thumbnail) && (
                     <Link to={`/${a.id}`}>
                       <figure className="kg-card-exhibitions kg-image-card pad-1">
                         <Img
