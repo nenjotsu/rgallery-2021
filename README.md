@@ -5,5 +5,5 @@
 </p>
 
 <h1 align="center">
-  RGallery
+  RGallery - Contemporary Arts
 </h1>
