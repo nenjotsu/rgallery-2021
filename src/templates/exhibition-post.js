@@ -14,7 +14,7 @@ const RelatedPost = ({ node }) => (
   <div className="col-6" key={node.id}>
     <Link to={`/${node.id}`}>
       <figure className="kg-card-exhibitions kg-image-card">
-        {isUndefined(node.thumbnail) && (
+        {!isUndefined(node.thumbnail) && (
           <Img
             fluid={node.thumbnail.childImageSharp.fluid}
             className="kg-image"
