@@ -35,9 +35,21 @@ class NewsPostTemplate extends React.Component {
     const siteTitle = data.site.siteMetadata.title;
     const prev = allArticles[currentIndex - 1];
     const next = allArticles[currentIndex + 1];
+
+    let ogImage = "";
+
+    if (!isEmpty(post.cover_photo.childImageSharp.fixed.src)) {
+      ogImage = `${siteMetadata.siteUrl}/${post.cover_photo.childImageSharp.fixed.src}`;
+      console.log("dumaan", ogImage);
+    }
+
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title={post.title} description={post.description || post.title} />
+        <SEO
+          title={post.title}
+          description={post.description || post.title}
+          ogImage={ogImage}
+        />
         <div className="row">
           <Navigation logo={data.logo.childImageSharp.fixed} />
         </div>
@@ -70,7 +82,9 @@ class NewsPostTemplate extends React.Component {
             <Markdown
               className="post-content-body"
               // source={post.body}
-            >{post.body}</Markdown>
+            >
+              {post.body}
+            </Markdown>
           )}
           <hr />
           <h2 className="post-content-title">Related News</h2>
@@ -150,7 +164,7 @@ export const pageQuery = graphql`
         author
       }
     }
-    logo: file(relativePath: { eq: "horizontal-transparent.png" }) {
+    logo: file(relativePath: { eq: "square-logo.png" }) {
       childImageSharp {
         fixed(height: 50) {
           ...GatsbyImageSharpFixed
@@ -169,6 +183,9 @@ export const pageQuery = graphql`
         childImageSharp {
           fluid(maxWidth: 1360) {
             ...GatsbyImageSharpFluid
+          }
+          fixed(height: 350) {
+            ...GatsbyImageSharpFixed
           }
         }
       }

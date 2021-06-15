@@ -1,10 +1,72 @@
 import React from "react";
 import Img from "gatsby-image";
 import { Link } from "gatsby";
+import { IconInstagram, IconFacebook } from "../icons";
 
 export default ({ logo }) => (
   <nav>
     <ul className="nav-wrapper">
+      <li>
+        <Link to={`/`}>
+          <Img fixed={logo} alt="RGallery Logo" />
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to={`/`}>Home</Link>
+      </li>
+      <li className="nav-item">
+        <Link to={`/exhibitions`}>Exhibitions</Link>
+      </li>
+      <li className="nav-item">
+        <Link to={`/news`}>News</Link>
+      </li>
+      <li className="nav-item">
+        <Link to={`/artists`}>Artists</Link>
+      </li>
+      <li className="nav-item">
+        <Link to={`/visit`}>Visit</Link>
+      </li>
+      <li className="nav-item">
+        <a
+          href="https://www.instagram.com/rgallery.ph/"
+          title="Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: "inline-flex" }}
+        >
+          <img
+            style={{
+              height: "1.5em",
+              marginRight: 4
+            }}
+            src={IconInstagram}
+            alt="instagram"
+          />
+          Instagram
+        </a>
+      </li>
+      <li className="nav-item">
+        <a
+          href="https://www.facebook.com/rgalleryph"
+          title="Facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: "inline-flex" }}
+        >
+          <img
+            style={{
+              height: "1.5em",
+              marginRight: 4
+            }}
+            src={IconFacebook}
+            alt="facebook"
+          />
+          Facebook
+        </a>
+      </li>
+    </ul>
+
+    <ul className="nav-wrapper-mobile">
       <li>
         <Link to={`/`}>
           <Img fixed={logo} alt="RGallery Logo" />

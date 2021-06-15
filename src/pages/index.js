@@ -32,6 +32,7 @@ const BlogIndex = ({ data }, location) => {
 
   // const [exhibitionIndex, setExhibitionIndex] = React.useState(0);
   const [exhibition] = React.useState(exhibitions[0]);
+  const [showHideLegend, setShowHideLegend] = React.useState(true);
 
   // const handleNext = () => {
   //   if (exhibitionIndex < exhibitions.length - 1) {
@@ -57,6 +58,11 @@ const BlogIndex = ({ data }, location) => {
     // console.log("articles", articles);
   }
 
+  const handleShowHideLegend = e => {
+    e.preventDefault();
+    setShowHideLegend(!showHideLegend);
+  };
+
   return (
     <Layout title={siteTitle}>
       <SEO
@@ -72,7 +78,7 @@ const BlogIndex = ({ data }, location) => {
           onChange={() => {}}
           onClickItem={() => {}}
           onClickThumb={() => {}}
-          autoPlay={true}
+          autoPlay={false}
           stopOnHover={false}
           infiniteLoop={true}
           swipeable
@@ -83,13 +89,17 @@ const BlogIndex = ({ data }, location) => {
           {banners.map(({ node: b }) => (
             <div key={b.id}>
               <Img fluid={b.cover.childImageSharp.fluid} />
-              <div className="legend">
+              <div
+                className="legend"
+                style={{ display: showHideLegend ? "block" : "none" }}
+              >
                 <h4>{b.title}</h4>
                 <p>{b.description}</p>
               </div>
             </div>
           ))}
         </Carousel>
+        <button onClick={handleShowHideLegend}>Show/Hide Information</button>
       </div>
       <article className="post-content-lg page-template no-image">
         <div className="post-content-body">
@@ -214,7 +224,7 @@ const indexQuery = graphql`
     #     }
     #   }
     # }
-    logo: file(relativePath: { eq: "horizontal-transparent.png" }) {
+    logo: file(relativePath: { eq: "square-logo.png" }) {
       childImageSharp {
         fixed(height: 50) {
           ...GatsbyImageSharpFixed

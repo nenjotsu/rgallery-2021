@@ -4,7 +4,7 @@
   "description": "A custom, image-centric theme for Gatsby",
   "version": "1.0.0",
   "author": "nenjotsu <nenjotsu@gmail.com>",
-  "sideEffects": true,
+  "sideEffects": false,
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -17,6 +17,8 @@
     "url": "https://github.com/nenjotsu/rgallery-2021/issues"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "gatsby": "^2.4.2",
     "gatsby-cli": "^3.2.0",
     "gatsby-image": "^2.0.41",
@@ -48,6 +50,7 @@
     "react-helmet": "^5.2.1",
     "react-markdown": "^5.0.3",
     "react-responsive-carousel": "^3.2.18",
+    "react-share": "^4.4.0",
     "typeface-alegreya": "^0.0.69",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.54",

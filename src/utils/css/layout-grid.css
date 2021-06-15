@@ -10,6 +10,13 @@
   z-index: 5;
 }
 
+.nav-wrapper-mobile {
+  display: none;
+  list-style: none;
+  margin-top: 2em;
+  z-index: 5;
+}
+
 .nav-item {
   margin-top: 2rem;
   font-weight: 600;

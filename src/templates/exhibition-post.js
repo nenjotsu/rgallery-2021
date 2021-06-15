@@ -3,6 +3,11 @@ import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { Link } from "gatsby";
 import isUndefined from "lodash/isUndefined";
+import isEmpty from "lodash/isEmpty";
+
+import ShareButton from "../components/share";
+// import CustomShareButton from '../components/customShare';
+
 import Markdown from "../components/Markdown";
 
 import Layout from "../components/layout";
@@ -37,11 +42,33 @@ class ExhibitionPostTemplate extends React.Component {
     const all = data.allStrapiExhibitions.edges;
     const currentIndex = all.findIndex(a => a.node.id === post.id);
     const siteTitle = data.site.siteMetadata.title;
+    const siteMetadata = data.site.siteMetadata;
     const prev = all[currentIndex - 1];
     const next = all[currentIndex + 1];
+    console.log("post", post);
+    console.log("data.logo.childImageSharp", data.logo.childImageSharp);
+    console.log("siteMetadata.siteUrl", siteMetadata.siteUrl);
+
+    // let ogImage = data.logo.childImageSharp.fixed.src;
+    let ogImage = "";
+
+    // if (!isEmpty(post.thumbnail.childImageSharp.fluid.src)) {
+    //   ogImage =  `${siteMetadata.siteUrl}/${post.thumbnail.childImageSharp.fluid.src}`
+    //   console.log('dumaan', ogImage);
+    // }
+    if (!isEmpty(post.thumbnail.childImageSharp.fixed.src)) {
+      ogImage = `${siteMetadata.siteUrl}/${post.thumbnail.childImageSharp.fixed.src}`;
+      // ogImage =  `${post.thumbnail.childImageSharp.fixed.src}`
+      console.log("dumaan", ogImage);
+    }
+
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title={post.title} description={post.description || post.title} />
+        <SEO
+          title={post.title}
+          description={post.description || post.title}
+          ogImage={ogImage}
+        />
         <div className="row">
           <Navigation logo={data.logo.childImageSharp.fixed} />
         </div>
@@ -91,7 +118,9 @@ class ExhibitionPostTemplate extends React.Component {
             <Markdown
               className="post-content-body"
               // source={post.content}
-            >{post.content}</Markdown>
+            >
+              {post.content}
+            </Markdown>
           )}
           <hr />
           <h2 className="post-content-title">Related Exhibitions</h2>
@@ -112,6 +141,23 @@ class ExhibitionPostTemplate extends React.Component {
             </p>
           </footer>
         </article>
+        <ShareButton
+          title={post.title}
+          url={`${siteMetadata.siteUrl}/${post.id}`}
+          twitterHandle={siteMetadata.twitterHandle}
+          tags={["exhibitions"]}
+        />
+        {/* <CustomShareButton url={`${siteMetadata.siteUrl}/${post.id}`} text="short text" longtext="longtext" /> */}
+        {/* <ShareButton
+          socialConfig={{
+            twitterHandle: siteMetadata.twitterHandle,
+            config: {
+              url: `${siteMetadata.siteUrl}${currentIndex.id}`,
+              title: siteMetadata.title,
+            },
+          }}
+          tags={['exhibitions']}
+        /> */}
       </Layout>
     );
   }
@@ -125,9 +171,13 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
+        twitterHandle
+        instagramHandle
+        facebookHandle
       }
     }
-    logo: file(relativePath: { eq: "horizontal-transparent.png" }) {
+    logo: file(relativePath: { eq: "square-logo.png" }) {
       childImageSharp {
         fixed(height: 50) {
           ...GatsbyImageSharpFixed
@@ -148,6 +198,9 @@ export const pageQuery = graphql`
         childImageSharp {
           fluid(maxWidth: 1360) {
             ...GatsbyImageSharpFluid
+          }
+          fixed(height: 350) {
+            ...GatsbyImageSharpFixed
           }
         }
       }

@@ -211,14 +211,15 @@
   bottom: 40px;
   left: 50%;
   margin-left: -45%;
-  width: 30%;
+  width: 50%;
   border-radius: 10px;
   background: #000000c4;
   color: #fff;
   padding: 10px;
-  font-size: 12px;
+  padding-bottom: 2em;
+  font-size: 1.5em;
   text-align: center;
-  opacity: 0.25;
+  opacity: 0.85;
   -webkit-transition: opacity 0.35s ease-in-out;
   -moz-transition: opacity 0.35s ease-in-out;
   -ms-transition: opacity 0.35s ease-in-out;
@@ -272,4 +273,10 @@
 }
 .carousel:hover .slide .legend {
   opacity: 1;
+}
+
+@media only screen and (max-width: 700px) {
+  .carousel .slide .legend {
+    width: 90%;
+  }
 }
