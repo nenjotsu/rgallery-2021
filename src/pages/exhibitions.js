@@ -60,6 +60,7 @@ const ExhibitionsPage = ({ data }) => {
                       <li>{a.dateTo}</li>
                     </ul>
                     <p>{a.description}</p>
+                    <br />
                     <button className="button default">
                       <Link to={`/${a.id}`}>Read more...</Link>
                     </button>
@@ -96,7 +97,7 @@ const indexQuery = graphql`
         description
       }
     }
-    logo: file(relativePath: { eq: "horizontal-transparent.png" }) {
+    logo: file(relativePath: { eq: "square-logo.png" }) {
       childImageSharp {
         fixed(height: 50) {
           ...GatsbyImageSharpFixed

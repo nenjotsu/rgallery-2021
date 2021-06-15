@@ -65,7 +65,7 @@ const indexQuery = graphql`
         description
       }
     }
-    logo: file(relativePath: { eq: "horizontal-transparent.png" }) {
+    logo: file(relativePath: { eq: "square-logo.png" }) {
       childImageSharp {
         fixed(height: 50) {
           ...GatsbyImageSharpFixed

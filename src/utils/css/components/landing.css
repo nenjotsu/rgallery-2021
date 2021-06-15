@@ -131,7 +131,8 @@ body {
 h1,
 h2,
 h3 {
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
+  font-family: "Quicksand", sans-serif;
 }
 .visuallyhidden {
   clip: rect(1px, 1px, 1px, 1px);

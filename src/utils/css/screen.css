@@ -106,7 +106,8 @@ body {
   margin: 0;
   font-size: 4.2rem;
   color: var(--color-base);
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
+  font-family: "Quicksand", sans-serif;
 }
 @media (max-width: 500px) {
   .page-head-title {
@@ -745,4 +746,19 @@ body {
 .page-template .post-content-body h2,
 .page-template .post-content-body h3 {
   text-align: center;
+}
+
+@media only screen and (max-width: 750px) {
+  .nav-wrapper {
+    display: none;
+  }
+  .nav-wrapper-mobile {
+    display: inline;
+  }
+  ul.nav-wrapper-mobile > li {
+    padding-left: 2em;
+  }
+  .text-contemporary {
+    display: none;
+  }
 }

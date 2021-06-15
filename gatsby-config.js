@@ -9,7 +9,11 @@ module.exports = {
     siteUrl: urljoin(siteConfig.url, siteConfig.prefix),
     social: {
       twitter: siteConfig.twitter
-    }
+    },
+    twitterHandle: `@${siteConfig.twitter}`,
+    instagramHandle: `@${siteConfig.instagram}`,
+    facebookHandle: `@${siteConfig.facebook}`,
+    url: urljoin(siteConfig.url, siteConfig.prefix)
   },
   plugins: [
     `gatsby-plugin-transition-link`,
