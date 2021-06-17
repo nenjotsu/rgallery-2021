@@ -45,21 +45,10 @@ class ExhibitionPostTemplate extends React.Component {
     const siteMetadata = data.site.siteMetadata;
     const prev = all[currentIndex - 1];
     const next = all[currentIndex + 1];
-    console.log("post", post);
-    console.log("data.logo.childImageSharp", data.logo.childImageSharp);
-    console.log("siteMetadata.siteUrl", siteMetadata.siteUrl);
 
-    // let ogImage = data.logo.childImageSharp.fixed.src;
     let ogImage = "";
-
-    // if (!isEmpty(post.thumbnail.childImageSharp.fluid.src)) {
-    //   ogImage =  `${siteMetadata.siteUrl}/${post.thumbnail.childImageSharp.fluid.src}`
-    //   console.log('dumaan', ogImage);
-    // }
     if (!isEmpty(post.thumbnail.childImageSharp.fixed.src)) {
       ogImage = `${siteMetadata.siteUrl}/${post.thumbnail.childImageSharp.fixed.src}`;
-      // ogImage =  `${post.thumbnail.childImageSharp.fixed.src}`
-      console.log("dumaan", ogImage);
     }
 
     return (

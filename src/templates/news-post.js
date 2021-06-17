@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { Link } from "gatsby";
+import isEmpty from "lodash/isEmpty";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -33,14 +34,13 @@ class NewsPostTemplate extends React.Component {
     const allArticles = data.allStrapiArticles.edges;
     const currentIndex = allArticles.findIndex(a => a.node.id === post.id);
     const siteTitle = data.site.siteMetadata.title;
+    const siteMetadata = data.site.siteMetadata;
     const prev = allArticles[currentIndex - 1];
     const next = allArticles[currentIndex + 1];
 
     let ogImage = "";
-
     if (!isEmpty(post.cover_photo.childImageSharp.fixed.src)) {
       ogImage = `${siteMetadata.siteUrl}/${post.cover_photo.childImageSharp.fixed.src}`;
-      console.log("dumaan", ogImage);
     }
 
     return (
