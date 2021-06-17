@@ -92,9 +92,6 @@ exports.createPages = ({ graphql, actions }) => {
     const exhibitions = result.data.allStrapiExhibitions.edges;
     const news = result.data.allStrapiArticles.edges;
 
-    console.log("exhibitions", exhibitions);
-    console.log("news", news);
-
     news.forEach((item, index) => {
       const previous = index === news.length - 1 ? null : news[index + 1].node;
       const next = index === 0 ? null : news[index - 1].node;
