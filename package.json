@@ -4,7 +4,7 @@
   "description": "A custom, image-centric theme for Gatsby",
   "version": "1.0.0",
   "author": "nenjotsu <nenjotsu@gmail.com>",
-  "sideEffects": false,
+  "sideEffects": true,
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
