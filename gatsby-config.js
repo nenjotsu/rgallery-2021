@@ -13,10 +13,19 @@ module.exports = {
     twitterHandle: `@${siteConfig.twitter}`,
     instagramHandle: `@${siteConfig.instagram}`,
     facebookHandle: `@${siteConfig.facebook}`,
-    url: urljoin(siteConfig.url, siteConfig.prefix)
+    url: siteConfig.url
   },
   plugins: [
     `gatsby-plugin-transition-link`,
+    // {
+    //   resolve: `gatsby-plugin-facebook-sdk`,
+    //   options: {
+    //     appId: '1676983692485901',
+    //     // status     : true,
+    //     // xfbml      : true,
+    //     // version    : 'v2.7'
+    //   }
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -176,6 +176,10 @@ section {
   padding: 0 !important;
 }
 
+button.react-share__ShareButton {
+  margin: 3em 0;
+}
+
 @media all and (-ms-high-contrast: none) {
   .grid-container {
     display: -ms-grid;

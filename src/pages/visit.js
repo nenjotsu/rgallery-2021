@@ -86,8 +86,8 @@ const VisitPage = ({ data }, location) => {
                 }}
               >
                 <h4 id="heading-level-4">Opening Hours</h4>
-                <p>Monday-Saturday 11AM - 6PM</p>
-                <p>The Gallery will be closed by Sunday and Holidays</p>
+                <p>Tuesday-Saturday 9AM - 6PM</p>
+                <p>The Gallery will be closed by Sunday, Monday and Holidays</p>
               </div>
             </div>
           </div>
