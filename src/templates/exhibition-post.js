@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 import isUndefined from "lodash/isUndefined";
 import isEmpty from "lodash/isEmpty";
 
-import ShareButton from "../components/share";
+// import ShareButton from "../components/share";
 // import CustomShareButton from '../components/customShare';
 
 import Markdown from "../components/Markdown";
@@ -48,15 +48,48 @@ class ExhibitionPostTemplate extends React.Component {
 
     let ogImage = "";
     if (!isEmpty(post.thumbnail.childImageSharp.fixed.src)) {
-      ogImage = `${siteMetadata.siteUrl}/${post.thumbnail.childImageSharp.fixed.src}`;
+      ogImage = `${siteMetadata.url}${post.thumbnail.childImageSharp.fixed.src}`;
     }
+
+    const fbShareHandle = () => {
+      console.log("url fbshare", `${siteMetadata.siteUrl}${post.id}`);
+      // window.FB.init({
+      //   appId            : '1676983692485901',
+      //   autoLogAppEvents : true,
+      //   xfbml            : true,
+      //   version          : 'v2.10'
+      // });
+      // window.FB.AppEvents.logPageView();
+
+      window.FB.ui(
+        {
+          display: "popup",
+          method: "share",
+          href: `${siteMetadata.siteUrl}${post.id}`
+        },
+        function(response) {}
+      );
+    };
 
     return (
       <Layout location={location} title={siteTitle}>
         <SEO
           title={post.title}
           description={post.description || post.title}
-          ogImage={ogImage}
+          meta={[
+            {
+              property: "og:url",
+              content: `${siteMetadata.siteUrl}/${post.id}`
+            },
+            {
+              property: "og:image",
+              content: ogImage
+            },
+            {
+              property: "og:site_name",
+              content: `${siteTitle} - ${post.title}`
+            }
+          ]}
         />
         <div className="row">
           <Navigation logo={data.logo.childImageSharp.fixed} />
@@ -130,12 +163,20 @@ class ExhibitionPostTemplate extends React.Component {
             </p>
           </footer>
         </article>
-        <ShareButton
-          title={post.title}
-          url={`${siteMetadata.siteUrl}/${post.id}`}
+        {/* <ShareButton
+          title={`${post.title} - ${post.description}`}
+          url={`${siteMetadata.url}/${post.id}`}
           twitterHandle={siteMetadata.twitterHandle}
           tags={["exhibitions"]}
-        />
+        /> */}
+        {/* <button onClick={fbShareHandle}>Share FB</button> */}
+        {/* <a
+          href=""
+          data-layout="button"
+          // onClick={window.open(`https://www.facebook.com/sharer.php?u=${siteMetadata.siteUrl}%2F${post.id}%2F&summary=MySummary&title=MyTitle&description=MyDescription&picture=${ogImage}`, 'ventanacompartir', 'toolbar=0, status=0, width=650, height=450')}
+        >
+          Share
+        </a> */}
         {/* <CustomShareButton url={`${siteMetadata.siteUrl}/${post.id}`} text="short text" longtext="longtext" /> */}
         {/* <ShareButton
           socialConfig={{
@@ -161,6 +202,7 @@ export const pageQuery = graphql`
         title
         author
         siteUrl
+        url
         twitterHandle
         instagramHandle
         facebookHandle

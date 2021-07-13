@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-function SEO({ description, lang, meta, keywords, title, ogImage }) {
+function SEO({ description, lang, meta, keywords, title }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -52,10 +52,6 @@ function SEO({ description, lang, meta, keywords, title, ogImage }) {
           content: `website`
         },
         {
-          property: `og:image`,
-          content: `${ogImage}`
-        },
-        {
           name: `twitter:card`,
           content: `summary`
         },
@@ -81,7 +77,27 @@ function SEO({ description, lang, meta, keywords, title, ogImage }) {
             : []
         )
         .concat(meta)}
-    />
+    >
+      {/* <script async={true} defer={true} crossOrigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0&appId=1676983692485901&autoLogAppEvents=1" /> */}
+      {/* <script>
+        
+          window.fbAsyncInit = function() {
+            window.FB.init({
+              appId: '1676983692485901',
+              autoLogAppEvents: true,
+              xfbml: true,
+              version: "v11.0"
+            });
+          }
+        
+      </script>
+      <script
+        async
+        defer
+        crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js"
+      ></script> */}
+    </Helmet>
   );
 }
 
@@ -97,8 +113,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-  ogImage: PropTypes.string
+  title: PropTypes.string.isRequired
 };
 
 export default SEO;

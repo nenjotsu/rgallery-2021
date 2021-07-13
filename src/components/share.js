@@ -14,6 +14,7 @@ import {
 } from "react-share";
 
 const ShareButtons = ({ title, url, twitterHandle, tags }) => {
+  // console.log('url', url);
   return (
     <div>
       <FacebookShareButton url={url} quote={title} hashtags={tags}>
